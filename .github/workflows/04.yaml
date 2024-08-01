@@ -1,0 +1,11 @@
+name: 04 - using actions
+on: workflow_dispatch
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "checkout code"
+              run: actions/checkout@v4
+            - name: "priting folders"
+              run: ls
