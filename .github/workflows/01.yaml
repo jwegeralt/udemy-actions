@@ -1,0 +1,16 @@
+name: 01- building lbocks
+on: [push,workflow_dispatch]
+  jobs:
+    echo-hello:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Say Hello
+          run: echo "Hello, World!"
+    echo-goodbye:
+      runs-on: ubuntu-latest
+        steps:
+          - name: failed step
+            run: echo "I will fail!" 
+                 exit 0
+          - name: goodbye step
+            run: echo "Goodbye"
