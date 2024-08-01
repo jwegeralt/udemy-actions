@@ -6,6 +6,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "checkout code"
-              run: actions/checkout@v4
+              uses: actions/checkout@v4
             - name: "priting folders"
               run: ls
