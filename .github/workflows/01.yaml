@@ -1,5 +1,5 @@
 name: 01- building lbocks
-on: [push,workflow_dispatch]
+on: [push, workflow_dispatch]
   jobs:
     echo-hello:
       runs-on: ubuntu-latest
