@@ -1,0 +1,21 @@
+name: 07 - Using Expressions
+on: 
+    push:
+    workflow_dispatch:
+        inputs:
+            debug:
+                type: boolean
+                default: false
+
+
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        steps:
+            
+            - if: inputs.debug
+              run: echo "printing the data"
+            - if: inputs.debug && github.ref == 'refs/heads/main'
+              run: echo "run on main"
+            - run: "HI"
