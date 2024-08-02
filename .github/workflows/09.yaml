@@ -7,12 +7,13 @@ jobs:
     echo1:
         runs-on: ubuntu-latest
         steps:
+            - run: sleep 20
             - run: exit -1
-            - if: !failure()
+            - if: ${{ success() }}
               run: echo "I will print if previous steps succeed"
-            - if: failure()
+            - if: ${{ failure() }}
               run: echo "I will run if previous fail"
-            - if: !cancelled()
+            - if: ${{ !cancelled() }}
               run: echo "not cancelled"
-            - if: cancelled()
+            - if: ${{ cancelled() }}
               run: echo "Ws cancelled"
