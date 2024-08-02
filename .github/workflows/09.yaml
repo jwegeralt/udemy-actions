@@ -1,6 +1,5 @@
 name: 09 - using functions
 on: 
-    push:
     workflow_dispatch:
 
 jobs:
