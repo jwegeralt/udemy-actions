@@ -18,4 +18,4 @@ jobs:
               run: echo "printing the data"
             - if: inputs.debug && github.ref == 'refs/heads/main'
               run: echo "run on main"
-            - run: "HI"
+            - run: echo "HI"
