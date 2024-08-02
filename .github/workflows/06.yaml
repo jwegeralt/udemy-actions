@@ -10,11 +10,11 @@ jobs:
         steps:
             - run: |
                 echo "Ev name: ${{github.event_name}}"
-                echo "ref: ${{github.action_ref}}"
+                echo "ref: ${{github.ref}}"
                 echo "sha: ${{github.sha}}"
                 echo "actor: ${{github.actor}}"
                 echo "workflow: ${{github.workflow}}"
                 echo "run id: ${{github.run_id}}"
                 echo "run number: ${{github.run_number}}"
             - name: Retrieve Variable
-              run: echo $REPO_VAR
+              run: echo "${{vars.REPO_VAR}}"
