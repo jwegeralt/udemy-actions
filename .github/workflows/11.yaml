@@ -8,7 +8,6 @@ on:
                 description: "skip deploymenet and only print build output"
             target:
                 type: environment
-                required: true
                 description: "Which enviroment the workflow will target"
             tag:
                 type: choice
