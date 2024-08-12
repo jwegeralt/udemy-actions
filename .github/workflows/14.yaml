@@ -1,0 +1,53 @@
+name: 14 - artifact
+on: 
+  workflow_dispatch:
+    inputs:
+        use-cache:
+            type: boolean
+            default: true
+            description: "Whether to execute cache step"
+        node-version:
+            type: choice
+            options:
+                - 18.x
+                - 20.x
+                - 21.x
+            default: 20.x
+            description: node versoin
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 14-artifacts/react-app
+    steps:
+        - name: "checkout code"
+          uses: actions/checkout@v4
+        - name: "setup node"
+          uses: actions/setup-node@v4
+          with: 
+            node-version: ${{inputs.node-version}}
+        - name: doenload cached
+          id: cache
+          if: ${{inputs.use-cache}}
+          uses: actions/cache@v3
+          with: 
+            path: 13-caching/react-app/node_modules
+            key: deps-node-modules-${{ hashFiles('13-caching/react-app/package-lock.json') }}
+        - name: "Install dependencies"
+          if: steps.cache.outputs.cache-hit != 'true'
+          run: npm ci
+        - name: "Testing"
+          run: npm run test
+        - name: "Building"
+          run: npm run build
+        - name: upload biuld files
+          uses: actions/upload-artifact@v4 
+          with: 
+            name: app
+            path: 14-artifacts/react-app/build
+    deploy:
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: 13-caching/react-app
