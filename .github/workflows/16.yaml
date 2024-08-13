@@ -1,4 +1,4 @@
-name: 01- building lbocks
+name: 16 - env
 on: 
   workflow_dispatch:
     inputs:
